@@ -3,18 +3,21 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
-trigger:
-- master
+trigger: none
+
+jobs:
+-job: build
 pool: 
 - vmimage: Tosca Agent
 - task: CmdLine@2
- inputs:
-  script: '$(Agent.HomeDirectory)\\_work\\Client\\ToscaCIClient.exe -m distributed -t junit -r $(Common.TestResultsDirectory)\\ToscaCi.xml'
+inputs:
+steps:
+- script: '$(Agent.HomeDirectory)\\_work\\Client\\ToscaCIClient.exe -m distributed -t junit -r $(Common.TestResultsDirectory)\\ToscaCi.xml'
+inputs:
 - task: PublishTestResults@2
-  inputs:
-    testResultsFormat: 'JUnit'
-    testResultsFiles: '**/ToscaCI*.xml'
-    searchFolder: '$(Common.TestResultsDirectory)'
-    failTaskOnFailedTests: true
-    testRunTitle: 'Publish ToscaCI Test Results'
+  testResultsFormat: 'JUnit'
+  testResultsFiles: '**/ToscaCI*.xml'
+  searchFolder: '$(Common.TestResultsDirectory)'
+  failTaskOnFailedTests: true
+  testRunTitle: 'Publish ToscaCI Test Results'
 
