@@ -8,14 +8,13 @@ trigger:
 pool: 
 - vmimage: Tosca Agent
 - task: CmdLine@2
-displayName: 'Run Tosca CI'
-inputs:
-script: '$(Agent.HomeDirectory)\\_work\\Client\\ToscaCiClient.exe -m distributed -t junit -r $(Common.TestResultsDirectory)\\ToscaCi.xml'
+ inputs:
+  script: '$(Agent.HomeDirectory)\\_work\\Client\\ToscaCIClient.exe -m distributed -t junit -r $(Common.TestResultsDirectory)\\ToscaCi.xml'
 - task: PublishTestResults@2
-inputs:
-testResultsFormat: 'JUnit'
-testResultsFiles: '**/ToscaCI*.xml'
-searchFolder: '$(Common.TestResultsDirectory)'
-failTaskOnFailedTests: true
-testRunTitle: 'Publish ToscaCI Test Results'
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: '**/ToscaCI*.xml'
+    searchFolder: '$(Common.TestResultsDirectory)'
+    failTaskOnFailedTests: true
+    testRunTitle: 'Publish ToscaCI Test Results'
 
