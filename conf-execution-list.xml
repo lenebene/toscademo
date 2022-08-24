@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <testConfiguration>
 	<TestEvents>
-		<TestEvent>DEX_CI_Event</TestEvent>
+		<TestEvent>TriServe</TestEvent>
+		<!--TestEvent>DEX_CI_Event</TestEvent-->
 		<!--TestEvent>Only_API</TestEvent-->
 		<!--TestEvent>Only_GUI</TestEvent-->
 		<!--TestEvent>overnight-api-test</TestEvent>
